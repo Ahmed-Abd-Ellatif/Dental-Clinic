@@ -1,0 +1,12 @@
+{
+  "patients": [
+    {
+      "id": "01228921358",
+      "name": "ahmed",
+      "age": 24,
+      "city": "portsaid",
+      "date": "2022-03-22T05:30",
+      "status": "checkup"
+    }
+  ]
+}

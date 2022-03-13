@@ -1,0 +1,12 @@
+<footer class="footer">
+  <div class="box-container container">
+    <div class="box" *ngFor="let info of information">
+      <i [class]="info.icon"></i>
+      <h3>{{ info.title }}</h3>
+      <p>{{ info.contact }}</p>
+    </div>
+  </div>
+  <div class="credit">
+    &copy; copyright @ 2022 by <span>DentalClinic.</span>
+  </div>
+</footer>

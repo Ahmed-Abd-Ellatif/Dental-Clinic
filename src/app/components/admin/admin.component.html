@@ -1,0 +1,110 @@
+<section class="contact">
+  <h1 class="heading">make appointment</h1>
+
+  <form [formGroup]="formData">
+    <span>Your name :</span>
+
+    <small class="text-danger" [class.d-none]="name?.valid || name?.untouched"
+      >Name is Required *</small
+    >
+
+    <input
+      type="text"
+      class="box"
+      placeholder="Enter your name"
+      formControlName="name"
+    />
+
+    <!-- ======================================== -->
+    <span>Your Age :</span>
+    <small class="text-danger" [class.d-none]="age?.valid || age?.untouched"
+      >Age is Required *</small
+    >
+    <input
+      type="number"
+      class="box"
+      placeholder="Enter your age"
+      formControlName="age"
+    />
+    <!-- ======================================== -->
+    <span>Your phone number :</span>
+    <span *ngIf="id?.invalid && id?.touched">
+      <small class="text-danger" *ngIf="id?.errors?.['required']"
+        >Phone is Required *</small
+      >
+      <small class="text-danger" *ngIf="id?.errors?.['pattern']"
+        >Phone Must be 11 digit *</small
+      >
+    </span>
+
+    <input
+      type="text"
+      pattern="^\d{11}$"
+      class="box"
+      placeholder="Enter your Number"
+      formControlName="id"
+    />
+    <!-- ======================================== -->
+    <span>Your City :</span>
+    <small class="text-danger" [class.d-none]="city?.valid || city?.untouched"
+      >City is Required *</small
+    >
+    <input
+      type="text"
+      class="box"
+      placeholder="Enter your City"
+      formControlName="city"
+    />
+    <!-- ======================================== -->
+    <span>appointment date :</span>
+    <small class="text-danger" [class.d-none]="date?.valid || date?.untouched"
+      >Date is Required *</small
+    >
+    <input type="datetime-local" class="box" formControlName="date" />
+    <!-- ======================================== -->
+    <!-- ======================================== -->
+    <span>Status :</span>
+    <small
+      class="text-danger"
+      [class.d-none]="status?.valid || status?.untouched"
+      >status is Required *</small
+    >
+    <select type="text" class="box" formControlName="status">
+      <option value="checkup">Check Up</option>
+      <option value="consultation">consultation</option></select
+    >>
+    <!-- ======================================== -->
+    <input
+      (click)="addPatient()"
+      type="submit"
+      class="link-btn"
+      value="make appointment"
+      [disabled]="formData.invalid"
+    />
+    <!-- ======================================== -->
+  </form>
+</section>
+<!-- ===================================== -->
+<!-- ===================================== -->
+<div class="patient">
+  <div class="container">
+    <h1 class="heading">Admin System</h1>
+    <div class="patient-box" *ngFor="let p of patients">
+      <h3>{{ p.name }}</h3>
+      <p>
+        {{ p.age }} - {{ p.id }} - {{ p.city }} -
+        {{ p.date | date: "short" }}
+      </p>
+      <button [routerLink]="['/admin', p.id]" class="btn btn-primary m-1">
+        Show
+      </button>
+      <button (click)="deletePatient(p.id)" class="btn btn-danger m-1">
+        Delete
+      </button>
+    </div>
+  </div>
+</div>
+<div class="alertPaid" *ngIf="patients.length == 0">
+  <p class="alert alert-danger">No Patients Yet...</p>
+</div>
+<hr />

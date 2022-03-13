@@ -1,0 +1,61 @@
+<section class="container">
+  <div class="single" *ngFor="let p of patients">
+    <h3>name : {{ p.name | uppercase }}</h3>
+    <p>Age : {{ p.age }}</p>
+    <p>Phone : {{ p.id }}</p>
+    <p>City : {{ p.city }}</p>
+    <p>Date : {{ p.date | date: "short" }}</p>
+    <p>
+      Status :<span> {{ p.status }}</span>
+    </p>
+    <p *ngIf="p.status == 'checkup'; then thenPrice; else elsePrice"></p>
+    <ng-template #thenPrice>
+      <p>
+        Price : <span>{{ 50 | currency }}</span>
+      </p>
+    </ng-template>
+    <ng-template #elsePrice>
+      <p>
+        Price : <span>{{ 10 | currency }}</span>
+      </p>
+    </ng-template>
+    <button class="btn btn-danger btn-lg" (click)="deletePatient(p.id)">
+      Delete
+    </button>
+  </div>
+  <div class="alertPaid">
+    <p [ngClass]="paid ? 'alert alert-success' : 'alert alert-danger'">
+      {{ msg }}
+    </p>
+    <button (click)="pay()" class="link-btn">{{ btnMsg }}</button>
+  </div>
+
+  <!-- *************************************************** -->
+  <!-- Reset -->
+  <!-- *************************************************** -->
+  <div *ngIf="paid" class="print">
+    <div class="single" *ngFor="let p of patients">
+      <h2>✔ receipt</h2>
+      <h3>Dental<span>Clinic.</span></h3>
+      <p>Dr : Ahmed Abd Ellatif</p>
+      <p>Date : {{ p.date | date: "short" }}</p>
+      <p>
+        Status :<span> {{ p.status }}</span>
+      </p>
+      <p *ngIf="p.status == 'checkup'; then thenPrice; else elsePrice"></p>
+      <ng-template #thenPrice>
+        <p>
+          Total Price : <span>{{ 50 | currency }}</span>
+        </p>
+      </ng-template>
+      <ng-template #elsePrice>
+        <p>
+          Total Price : <span>{{ 10 | currency }}</span>
+        </p>
+      </ng-template>
+    </div>
+    <div class="alertPaid">
+      <button (click)="print()" class="link-btn">Print</button>
+    </div>
+  </div>
+</section>

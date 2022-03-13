@@ -1,0 +1,21 @@
+<section class="reviews">
+  <h1 class="heading">satisfied clients</h1>
+  <div class="box-container container">
+    <div class="box" *ngFor="let review of reviews">
+      <img [src]="review.imgUrl" alt="" />
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Pariatur
+        obcaecati temporibus praesentium libero quidem harum vero? Rerum, qui
+        sint. Voluptatibus doloremque deserunt quos deleniti. Consequatur et
+        accusantium amet deserunt itaque.
+      </p>
+      <div class="stars">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+      </div>
+      <h3>{{ review.name }}</h3>
+      <span>{{ review.title }}</span>
+    </div>
+  </div>
+</section>

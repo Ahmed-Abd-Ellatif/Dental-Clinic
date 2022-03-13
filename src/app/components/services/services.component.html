@@ -1,0 +1,10 @@
+<section class="services">
+  <h1 class="heading">Our Services</h1>
+  <div class="box-container container">
+    <div class="box" *ngFor="let ser of services">
+      <img [src]="ser.imgUrl" alt="" />
+      <h3>{{ ser.title }}</h3>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, vero!</p>
+    </div>
+  </div>
+</section>

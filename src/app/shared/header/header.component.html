@@ -1,0 +1,23 @@
+<header class="header fixed-top">
+  <div class="container">
+    <div class="row align-items-center justify-content-between">
+      <a routerLink="/" class="logo">Dental<span>Clinic.</span></a>
+
+      <nav class="nav" [ngClass]="toggle ? '' : 'active'">
+        <a routerLink="/">home</a>
+        <a routerLink="/about">about</a>
+        <a routerLink="/services">services</a>
+        <a routerLink="/process">process</a>
+        <a routerLink="/reviews">reviews</a>
+        <a routerLink="/contact">contact</a>
+        <a routerLink="/admin">admin</a>
+      </nav>
+      <a routerLink="/contact" class="link-btn">make appointment</a>
+      <div
+        id="menu-btn"
+        (click)="menuToggle()"
+        [ngClass]="toggle ? 'fas fa-bars' : 'fas fa-times'"
+      ></div>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,12 @@
+<section class="process">
+  <h1 class="heading">Work Procedss</h1>
+  <div class="box-container container">
+    <div class="box" *ngFor="let p of process">
+      <img [src]="p.imgUrl" alt="" />
+      <h3>{{ p.title }}</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, quos!
+      </p>
+    </div>
+  </div>
+</section>
